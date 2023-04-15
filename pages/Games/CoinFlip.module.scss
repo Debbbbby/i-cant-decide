@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 100%;
+    margin-bottom: 15px;
+  }
+  .result-text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5vh;
+    background-color: rgb(255, 182, 36, 0.7);
+    padding: 5px 17px;
+    border-radius: 5px;
+  }
+}
+
+.flipping-view {
+  height: 50vh;
+  margin-bottom: 5vh;
+}
+
+.flipping {
+  animation: flippingFinishing 1.3s ease-out 500ms forwards;
+}
+
+.button {
+  border: none;
+  background-color: lightskyblue;
+  padding: 0.5em 2em;
+  border-radius: 5px;
+  font-size: 1.6em;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.2);
+  &:hover:enabled {
+    background-color: #b8e4ff;
+    animation: btnHover 300ms ease-in 100ms forwards;
+  }
+  &:disabled {
+    background-color: #c8c8c8;
+  }
+}
+
+@keyframes btnHover {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 9px 3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes flippingFinishing {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+  }
+}

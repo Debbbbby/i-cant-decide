@@ -1,0 +1,33 @@
+.game-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .game {
+    position: relative;
+    max-width: 498px;
+    margin-bottom: 3vh;
+    position: relative;
+    .game-title {
+      margin: 0;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: darkslategrey;
+    }
+    a {
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .game-title {
+    font-size: 1.5rem;
+  }
+}

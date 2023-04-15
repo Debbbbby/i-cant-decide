@@ -1,0 +1,54 @@
+@mixin button_common($backgroundColor, $color) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 130px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2em;
+  padding: 5px 15px;
+  background-color: $backgroundColor;
+  color: $color;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 1px 8px 3px rgba(0, 0, 0, 0.2);
+  &:disabled {
+    background-color: rgb(179, 179, 179);
+    opacity: 0.6;
+  }
+}
+
+.max-hint {
+  margin-bottom: 3vh;
+  font-size: 18px;
+}
+
+.option-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btns-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 30px;
+  .btn-add {
+    @include button_common(white, sandybrown);
+    border: 1px solid sandybrown;
+    &:disabled {
+      color: white;
+    }
+  }
+  .btn-start {
+    @include button_common(sandybrown, ivory);
+  }
+  .btn-icon {
+    margin-right: 15px;
+    height: 35px;
+  }
+}
