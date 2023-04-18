@@ -38,9 +38,10 @@
   box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.2);
   &:hover:enabled {
     background-color: #b8e4ff;
-    animation: btnHover 300ms ease-in 100ms forwards;
+    animation: btnHover 300ms ease-in 0s forwards;
   }
-  &:disabled {
+  &.disabled {
+    // using ':disabled' seems to cause a bug on OS (:enabled & : disabled btns show at the same time)
     background-color: #c8c8c8;
   }
 }
@@ -52,11 +53,8 @@
   40% {
     transform: scale(0.9);
   }
-  70% {
-    transform: scale(0.7);
-  }
   100% {
-    transform: scale(1.1);
+    transform: scale(1);
     box-shadow: 4px 4px 9px 3px rgba(0, 0, 0, 0.1);
   }
 }
