@@ -24,11 +24,32 @@
   font-size: 18px;
 }
 
-.option-list {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+.list-wrapper {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  .option-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hand-pointing {
+    position: absolute;
+    height: 100px;
+    right: 0px;
+    top: 5px;
+    transform: rotate(-20deg);
+    z-index: 1;
+    animation: handPointing 1s ease-in-out 0s 4 alternate;
+  }
+  .hand-picking {
+    position: absolute;
+    height: 100px;
+    right: 0px;
+    z-index: 1;
+    animation: handPicking 1s ease-in-out 0s 2 forwards;
+  }
 }
 
 .btns-wrap {
@@ -50,5 +71,32 @@
   .btn-icon {
     margin-right: 15px;
     height: 35px;
+  }
+}
+
+@keyframes handPicking {
+  from {
+    transform: rotate(-20deg) scale(1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.05);
+  }
+  to {
+    transform: rotate(-20deg) scale(1);
+  }
+}
+
+@keyframes handPointing {
+  from {
+    top: 20px;
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(-20deg);
+  }
+  to {
+    top: calc(100% - 50px);
   }
 }

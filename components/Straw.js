@@ -1,7 +1,7 @@
 import classes from "./Straw.module.scss";
 
 function Straw(props) {
-  const { index, option, result, drawing } = props;
+  const { index, option, result } = props;
   const updateOptionHandler = (event) => {
     const value = event.target.value;
     props.update(value, index);
@@ -11,7 +11,7 @@ function Straw(props) {
     <li
       className={`${classes.option} ${`option` + index} ${
         result === index ? classes.highlighted : ""
-      } ${drawing ? classes.drawing : ""}`}
+      }`}
     >
       <div className={classes["option-index"]}>
         <p>{index + 1}</p>

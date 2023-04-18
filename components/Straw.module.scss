@@ -4,22 +4,10 @@
   position: relative;
   margin-bottom: 25px;
   max-width: 600px;
-  // drawing animation
-  &.drawing {
-    &:nth-child(odd) .option-index {
-      animation: highlightedIndex 3s ease-in-out 0s infinite forwards;
-    }
-    &:nth-child(even) .option-index {
-      animation: highlightedIndex 3s ease-in-out 0s infinite alternate-reverse;
-    }
-  }
   // showing result
   &.highlighted {
     .input-wrap {
       animation: tada 1s ease-in-out 0s 2 forwards;
-    }
-    .option-index {
-      animation: highlightedIndex 3s ease-in-out 0s 2 forwards;
     }
     img {
       opacity: 1;
@@ -76,24 +64,6 @@
     &:active {
       background-color: green;
     }
-  }
-}
-
-@keyframes highlightedIndex {
-  0% {
-    box-shadow: 0px 0px 15px 7px rgba(0, 233, 255, 0.6);
-  }
-  25% {
-    box-shadow: 0px 0px 15px 7px rgba(255, 0, 136, 0.6);
-  }
-  50% {
-    box-shadow: 0px 0px 15px 7px rgba(0, 255, 195, 0.6);
-  }
-  75% {
-    box-shadow: 0px 0px 15px 7px rgba(255, 146, 12, 0.652);
-  }
-  100% {
-    box-shadow: 0px 0px 15px 7px rgba(238, 255, 0, 0.878);
   }
 }
 

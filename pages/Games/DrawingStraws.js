@@ -7,21 +7,25 @@ function Straws() {
   const [drawing, setDrawing] = useState(false);
   const [result, setResult] = useState(null);
   const [drawingCountdown, setDrawingCountdown] = useState(5);
+  const [handPickingPosition, setHandPickingPosition] = useState(0);
 
   const addOption = () => {
     if (optionList.length < 10) {
       setOptionList([...optionList, ""]);
     }
+    setResult(null);
   };
 
   const deleteOption = (index) => {
     setOptionList([...optionList].filter((opt, i) => i !== index));
+    setResult(null);
   };
 
   const updateOption = (value, index) => {
     const newList = [...optionList];
     newList[index] = value;
     setOptionList(newList);
+    setResult(null);
   };
 
   const start = () => {
@@ -32,17 +36,20 @@ function Straws() {
 
     const countdownInterval = setInterval(() => {
       setDrawingCountdown((prevSec) => {
-        return prevSec - 1;
+        const sec = prevSec - 1;
+        return sec <= 0 ? 0 : sec;
       });
     }, 1000);
 
     const showResultTimer = setTimeout(() => {
-      const rect = document
+      const resultOptionRect = document
         .getElementsByClassName("option" + randomInt)[0]
         .getBoundingClientRect();
-      window.scrollTo(0, rect.top);
+      const pickingHandPos = resultOptionRect.top - 165 + window.pageYOffset; // 165 = height of hand-picking img against top of an option item
+      setHandPickingPosition(pickingHandPos);
       setDrawing(false);
       setResult(randomInt);
+      window.scrollTo(0, pickingHandPos);
       clearTimeout(showResultTimer);
       clearInterval(countdownInterval);
     }, 5000);
@@ -51,19 +58,35 @@ function Straws() {
   return (
     <Fragment>
       <p className={classes["max-hint"]}>You can add up to 10 options.</p>
-      <ul className={classes["option-list"]}>
-        {optionList.map((option, index) => (
-          <Straw
-            key={`option${index}`}
-            index={index}
-            option={option}
-            drawing={drawing}
-            result={result}
-            delete={deleteOption.bind(null, index)}
-            update={updateOption}
+      <div className={classes["list-wrapper"]}>
+        {result !== null && (
+          <img
+            src="/assets/hand-picking.svg"
+            alt="hand-picking"
+            className={classes["hand-picking"]}
+            style={{ top: handPickingPosition + "px" }}
           />
-        ))}
-      </ul>
+        )}
+        {drawing && (
+          <img
+            src="/assets/hand-pointing.svg"
+            alt="hand-pointing"
+            className={`${classes["hand-pointing"]} `}
+          />
+        )}
+        <ul className={classes["option-list"]}>
+          {optionList.map((option, index) => (
+            <Straw
+              key={`option${index}`}
+              index={index}
+              option={option}
+              result={result}
+              delete={deleteOption.bind(null, index)}
+              update={updateOption}
+            />
+          ))}
+        </ul>
+      </div>
       <div className={classes["btns-wrap"]}>
         <button
           type="button"
