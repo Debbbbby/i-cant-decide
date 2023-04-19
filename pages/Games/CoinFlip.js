@@ -36,12 +36,12 @@ function CoinFlip() {
           {result === 0 && (
             <img src="/assets/coin-tails.png" alt="coin-tails" />
           )}
+          {result !== null && (
+            <p className={classes["result-text"]}>
+              {result === 1 ? "Heads!" : "Tails!"}
+            </p>
+          )}
         </div>
-        {result !== null && (
-          <p className={classes["result-text"]}>
-            {result === 1 ? "Heads!" : "Tails!"}
-          </p>
-        )}
         <button
           onClick={startFlipping}
           disabled={flipping}

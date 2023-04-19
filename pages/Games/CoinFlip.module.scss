@@ -4,13 +4,12 @@
   justify-content: center;
   align-items: center;
   img {
-    height: 100%;
+    width: 100%;
     margin-bottom: 15px;
   }
   .result-text {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 5vh;
     background-color: rgb(255, 182, 36, 0.7);
     padding: 5px 17px;
     border-radius: 5px;
@@ -18,7 +17,10 @@
 }
 
 .flipping-view {
-  height: 50vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 55vh;
   margin-bottom: 5vh;
 }
 
@@ -41,7 +43,7 @@
     animation: btnHover 300ms ease-in 0s forwards;
   }
   &.disabled {
-    // using ':disabled' seems to cause a bug on OS (:enabled & : disabled btns show at the same time)
+    // note: using ':disabled' seems to cause a bug on OS (:enabled & :disabled btns show at the same time)
     background-color: #c8c8c8;
   }
 }
