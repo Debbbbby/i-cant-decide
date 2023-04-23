@@ -11,20 +11,26 @@ function Straws() {
 
   const addOption = () => {
     if (optionList.length < 10) {
-      setOptionList([...optionList, ""]);
+      setOptionList((prevList) => {
+        return [...prevList, ""];
+      });
     }
     setResult(null);
   };
 
   const deleteOption = (index) => {
-    setOptionList([...optionList].filter((opt, i) => i !== index));
+    setOptionList((prevList) => {
+      return [...prevList].filter((opt, i) => i !== index);
+    });
     setResult(null);
   };
 
   const updateOption = (value, index) => {
-    const newList = [...optionList];
-    newList[index] = value;
-    setOptionList(newList);
+    setOptionList((prevList) => {
+      const newList = [...prevList];
+      newList[index] = value;
+      return newList;
+    });
     setResult(null);
   };
 
